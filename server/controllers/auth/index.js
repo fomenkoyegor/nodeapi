@@ -6,8 +6,23 @@ const key = jwtSecret;
 const {User} = require('../../models');
 const errHendler = require('../../untils/errHendler');
 
+const { Validator } = require('node-input-validator');
+
+
+
+
 const login = async (req, res) => {
   const {email, password} = req.body;
+  const v = new Validator({email, password}, {
+    email: 'required|email',
+    password: 'required|minLength:6|maxLength:15'
+  });
+
+  v.check().then((matched) => {
+    if (!matched) {
+      res.status(422).send(v.errors);
+    }
+  });
   const candidate = await User.findOne({email});
   if (candidate) {
     const passwordRes = bcrypt.compareSync(password, candidate.password);
@@ -35,6 +50,16 @@ const login = async (req, res) => {
 
 const register = async (req, res) => {
   const {email, password} = req.body;
+  const v = new Validator({email, password}, {
+    email: 'required|email',
+    password: 'required|minLength:6|maxLength:15'
+  });
+
+  v.check().then((matched) => {
+    if (!matched) {
+      res.status(422).send(v.errors);
+    }
+  });
   const candidate = await User.findOne({email});
   if (candidate) {
     res.status(409).send({
