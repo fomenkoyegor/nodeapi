@@ -1,0 +1,44 @@
+<ul class="nav justify-content-end bg-dark ">
+  <li class="nav-item">
+    <a class="nav-link"
+       routerLink="/home"
+       routerLinkActive="active"
+    >
+      home
+    </a>
+  </li>
+
+
+  <ng-container *ngIf="isAuth$ | async;else auth">
+
+  <li class="nav-item">
+
+    <a class="nav-link"
+       tabindex="-1"
+    >
+      <span>{{authService.getToken().user.email}}</span>
+      <span (click)="onLogOut()"> logout</span>
+    </a>
+  </li>
+  </ng-container>
+  <ng-template #auth>
+    <li class="nav-item">
+      <a class="nav-link"
+         routerLink="/auth/signin"
+         routerLinkActive="active"
+      >
+        signin
+      </a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link"
+         routerLink="/auth/signup"
+         routerLinkActive="active"
+      >
+        signup
+      </a>
+    </li>
+  </ng-template>
+
+
+</ul>

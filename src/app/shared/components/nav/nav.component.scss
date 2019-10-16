@@ -1,0 +1,7 @@
+a{
+  color: whitesmoke;
+  text-transform: uppercase;
+  &.active{
+    color: red;
+  }
+}

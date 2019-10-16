@@ -1,0 +1,30 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <button class="btn btn-secondary">add todo list</button>
+  </div>
+</div>
+
+
+<ng-container *ngIf="projects$ | async as projects;else loader">
+
+  <ng-container *ngIf="projects.length;else empty">
+    <app-project class="col-12" *ngFor="let project of projects" [project]="project"></app-project>
+  </ng-container>
+
+  <ng-template #empty>
+    <div class="container mt-2">
+      <div class="row justify-content-center">
+        you not have any projects
+      </div>
+    </div>
+  </ng-template>
+
+</ng-container>
+
+<ng-template #loader>
+  <div class="container">
+    <div class="row justify-content-center">
+      loading...
+    </div>
+  </div>
+</ng-template>

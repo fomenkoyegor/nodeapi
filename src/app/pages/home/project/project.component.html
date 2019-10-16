@@ -1,0 +1,45 @@
+<div class="container mt-3">
+  <div class="row justify-content-center">
+    <div class="col-md-8 col-12">
+
+      <div class="card border-dark mb-3" >
+
+        <div class="card-header bg-info flex" style="display: flex">
+          <div class="icon">
+            <i class="fa fa-calendar" aria-hidden="true"></i>
+          </div>
+
+          <div class="name" *ngIf="!isEdit">
+            {{project.name}}
+          </div>
+          <input type="text" *ngIf="isEdit" [(ngModel)]="newName">
+
+          <div class="controls" style="margin-left: auto">
+            <span *ngIf="isEdit" (click)="onSubmit()">ok</span>
+            <span *ngIf="isEdit" (click)="onCancel()">cancel</span>
+
+
+            <span class="icon" (click)="onEdit()" *ngIf="!isEdit">
+              <i class="fa fa-pencil" aria-hidden="true"></i>
+            </span>
+            <span class="icon" *ngIf="!isEdit">
+              <i class="fa fa-trash-o" aria-hidden="true"></i>
+            </span>
+          </div>
+        </div>
+        <div class="card-header bg-secondary ">
+          add task
+        </div>
+
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Dapibus ac facilisis in</li>
+          <li class="list-group-item">Vestibulum at eros</li>
+        </ul>
+
+
+      </div>
+
+    </div>
+  </div>
+</div>

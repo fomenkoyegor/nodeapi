@@ -4,7 +4,7 @@
   "scripts": {
     "ng": "ng",
     "start": "node server.js",
-    "dev:client": "ng serve",
+    "dev:client": "ng serve --proxy-config proxy.config.json",
     "dev:server": "nodemon server.js",
     "build": "ng build --prod",
     "test": "ng test",
@@ -24,6 +24,7 @@
     "@angular/router": "~8.2.7",
     "bcryptjs": "^2.4.3",
     "body-parser": "^1.19.0",
+    "bootstrap": "^4.3.1",
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "jsonwebtoken": "^8.5.1",

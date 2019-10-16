@@ -6,7 +6,7 @@ const {Validator} = require('node-input-validator');
 const get = async (req, res) => {
   try {
     const user = req.user.id;
-    const projects = await Project.find({user});
+    const projects = await Project.find({user}).sort({_id: -1});
     res.status(200).json(projects);
   } catch (err) {
     errHendler(res, err);
